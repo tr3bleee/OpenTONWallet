@@ -11,7 +11,7 @@ export default function WelcomePage() {
 		<Page back={false}>
 			<div className="flex h-screen items-center justify-center pb-28">
 				<div className="flex flex-col items-center">
-					<LargeTitle weight="1" className="mb-5">
+					<LargeTitle weight="1" className="mb-5 text-center">
 						Welcome to The Open Wallet
 					</LargeTitle>
 					<Title weight="2" className="mb-8 text-center px-4 sm:px-0 max-w-md">
