@@ -4,6 +4,7 @@ import { Button, LargeTitle, Title } from "@telegram-apps/telegram-ui";
 import { Page } from "@/components/Page";
 import Login from "./_assets/Login.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -22,8 +23,11 @@ export default function Home() {
 						before={<Image src={Login} alt="Login" />}
 						mode="filled"
 						size="s"
+						
 					>
-						Start using the wallet
+						<Link href="/auth">
+							Start using The Open Wallet
+						</Link>
 					</Button>
 				</div>
 			</div>
