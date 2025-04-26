@@ -6,7 +6,7 @@ import Login from "./_assets/Login.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function WelcomePage() {
 	return (
 		<Page back={false}>
 			<div className="flex h-screen items-center justify-center pb-28">
@@ -23,7 +23,7 @@ export default function Home() {
 						before={<Image src={Login} alt="Login" />}
 						mode="filled"
 						size="s"
-						
+
 					>
 						<Link href="/auth">
 							Start using The Open Wallet
