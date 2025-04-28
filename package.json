@@ -2,6 +2,7 @@
   "name": "nextjs-template",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "dev:https": "next dev --experimental-https",
@@ -12,6 +13,9 @@
   "dependencies": {
     "@telegram-apps/sdk-react": "^2.0.22",
     "@telegram-apps/telegram-ui": "^2.1.5",
+    "@ton/core": "^0.60.1",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^15.2.1",
     "@tonconnect/ui-react": "^2.0.5",
     "eruda": "^3.0.1",
     "next": "14.2.4",

@@ -25,7 +25,7 @@ export default function WelcomePage() {
 						size="s"
 
 					>
-						<Link href="/auth">
+						<Link href="/auth/login">
 							Start using The Open Wallet
 						</Link>
 					</Button>
