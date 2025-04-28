@@ -2,9 +2,12 @@
 
 import { Page } from "@/components/Page";
 import { Button, Input, Title } from "@telegram-apps/telegram-ui";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+
 export default function AuthPage() {
+	const router = useRouter();
 	const [wordCount, setWordCount] = useState(24);
 	const [words, setWords] = useState<string[]>(Array(24).fill(""));
 	const [error, setError] = useState<string | null>(null);
@@ -52,6 +55,8 @@ export default function AuthPage() {
 				address: data.address,
 				balanceLength: data.balance?.length
 			});
+			sessionStorage.setItem('wallet', JSON.stringify({ address: data.address, balance: data.balance }));
+			router.push('/wallet');
 			
 		} catch (err) {
 			console.error("[Client] Login error:", err);
@@ -123,7 +128,9 @@ export default function AuthPage() {
 					<Button
 						size="m"
 						disabled={!isFormValid || isLoading}
-						onClick={handleSubmit}
+						onClick={async () => {
+							await handleSubmit();
+						}}
 						className={(!isFormValid || isLoading) ? "opacity-50" : ""}
 					>
 						{isLoading ? "Loading..." : "Submit"}
