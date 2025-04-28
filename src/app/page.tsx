@@ -5,8 +5,21 @@ import { Page } from "@/components/Page";
 import Login from "./_assets/Login.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function WelcomePage() {
+	const router = useRouter();
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const data = sessionStorage.getItem("wallet");
+			if (data) {
+				router.push("/wallet");
+			}
+		}
+	}, [router]);
+
 	return (
 		<Page back={false}>
 			<div className="flex h-screen items-center justify-center pb-28">
