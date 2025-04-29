@@ -8,7 +8,7 @@ export const BalanceDisplay = ({ balance }: BalanceDisplayProps) => {
 	const formatBalance = (balance: string) => {
 		const nanoTON = BigInt(balance);
 		const TON = Number(nanoTON) / 1e9;
-		return TON.toFixed(2);
+		return TON.toFixed(4);
 	};
 
 	return (
