@@ -2,6 +2,7 @@ import copy from "@/app/_assets/Copy.svg";
 import settings from "@/app/_assets/Settings.svg";
 import { IconButton, Snackbar, Text } from "@telegram-apps/telegram-ui";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface WalletHeaderProps {
@@ -10,6 +11,7 @@ interface WalletHeaderProps {
 
 export const WalletHeader = ({ address }: WalletHeaderProps) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const router = useRouter();
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(address);
@@ -27,7 +29,9 @@ export const WalletHeader = ({ address }: WalletHeaderProps) => {
         </Text>
       </div>
       <div>
-        <IconButton mode="bezeled" size="s">
+        <IconButton mode="bezeled" size="s" onClick={() => {
+          return router.push("/settings");
+        }}>
           <Image src={settings} alt="Settings" />
         </IconButton>
       </div>
