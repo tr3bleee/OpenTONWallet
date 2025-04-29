@@ -15,7 +15,7 @@ export default function WalletPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const data = sessionStorage.getItem("wallet");
+    const data = localStorage.getItem("wallet");
     if (!data) {
       router.push("/auth/login");
       return;

@@ -1,19 +1,20 @@
 "use client";
 
-import { Button, LargeTitle, Title } from "@telegram-apps/telegram-ui";
+import { Button, LargeTitle, Text, Title } from "@telegram-apps/telegram-ui";
 import { Page } from "@/components/Page";
 import Login from "./_assets/Login.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import TonLogo from "./_assets/ton_logo.svg";
 
 export default function WelcomePage() {
 	const router = useRouter();
 
 	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			const data = sessionStorage.getItem("wallet");
+		if (typeof window !== "undefined") {
+			const data = localStorage.getItem("wallet");
 			if (data) {
 				router.push("/wallet");
 			}
@@ -36,12 +37,21 @@ export default function WelcomePage() {
 						before={<Image src={Login} alt="Login" />}
 						mode="filled"
 						size="s"
-
 					>
-						<Link href="/auth/login">
-							Start using The Open Wallet
-						</Link>
+						<Link href="/auth/login">Start using The Open Wallet</Link>
 					</Button>
+					<div className="flex items-center gap-2 mt-8">
+						<Image src={TonLogo} alt="Ton Logo" width={24} height={24} />
+						<Text className="text-sm text-gray-400">
+							Built on the{" "}
+							<a
+								href="https://ton.org/"
+								className="text-[#0098EA] hover:underline"
+							>
+								TON Blockchain
+							</a>
+						</Text>
+					</div>
 				</div>
 			</div>
 		</Page>

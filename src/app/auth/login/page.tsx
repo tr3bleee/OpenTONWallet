@@ -55,7 +55,7 @@ export default function AuthPage() {
 				address: data.address,
 				balanceLength: data.balance?.length
 			});
-			sessionStorage.setItem('wallet', JSON.stringify({ address: data.address, balance: data.balance }));
+			localStorage.setItem('wallet', JSON.stringify({ address: data.address, balance: data.balance }));
 			router.push('/wallet');
 			
 		} catch (err) {
