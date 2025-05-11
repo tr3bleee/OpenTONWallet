@@ -4,10 +4,14 @@ import { Page } from "@/components/Page";
 import { Button, Input, Title } from "@telegram-apps/telegram-ui";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {useTranslations} from "next-intl";
 
 
 export default function AuthPage() {
 	const router = useRouter();
+
+	const t = useTranslations('login');
+
 	const [wordCount, setWordCount] = useState(24);
 	const [words, setWords] = useState<string[]>(Array(24).fill(""));
 	const [error, setError] = useState<string | null>(null);
@@ -57,7 +61,7 @@ export default function AuthPage() {
 			});
 			localStorage.setItem('wallet', JSON.stringify({ address: data.address, balance: data.balance }));
 			router.push('/wallet');
-			
+
 		} catch (err) {
 			console.error("[Client] Login error:", err);
 			setError(err instanceof Error ? err.message : 'Something went wrong');
@@ -70,13 +74,13 @@ export default function AuthPage() {
 		<Page back={true}>
 			<div className="container mx-auto px-6 py-12 max-w-4xl">
 				<Title weight="2" className="mb-4 text-center text-3xl text-tg-text">
-					Enter your recovery phrase
+					{t('title')}
 				</Title>
 				<Title
 					weight="3"
 					className="mb-5 text-center text-lg text-tg-text text-gray-400"
 				>
-					Please enter your recovery phrase to access your wallet.
+					{t('description')}
 				</Title>
 
 				<div className="flex justify-center gap-2 mb-6">
@@ -89,7 +93,7 @@ export default function AuthPage() {
 								: "bg-gray-700 text-gray-300"
 						}`}
 					>
-						24 words
+						{t('24_words')}
 					</Button>
 					<Button
 						size="m"
@@ -100,7 +104,7 @@ export default function AuthPage() {
 								: "bg-gray-700 text-gray-300"
 						}`}
 					>
-						12 words
+						{t('12_words')}
 					</Button>
 				</div>
 
@@ -133,14 +137,14 @@ export default function AuthPage() {
 						}}
 						className={(!isFormValid || isLoading) ? "opacity-50" : ""}
 					>
-						{isLoading ? "Loading..." : "Submit"}
+						{isLoading ? t('loading') : t('submit')}
 					</Button>
 					<Button
 						size="m"
 						onClick={() => setWords(Array(wordCount).fill(""))}
 						className="ml-4"
 					>
-						Clear
+						{t('clear')}
 					</Button>
 				</div>
 			</div>

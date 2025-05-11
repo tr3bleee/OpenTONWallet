@@ -1,6 +1,33 @@
 {
-  "i18n": {
-    "header": "Application supports i18n",
-    "footer": "You can select a different language from the dropdown menu."
+  "welcome": {
+    "title": "Welcome to The Open Wallet",
+    "description": "The Open Wallet is a free and open-source wallet for the community.",
+    "start_button": "Start using The Open Wallet",
+    "built_on": "Built on the TON Blockchain"
+  },
+  "login": {
+    "title": "Enter your recovery phrase",
+    "description": "Please enter your recovery phrase to access your wallet.",
+    "24_words": "24 words",
+    "12_words": "12 words",
+    "submit": "Submit",
+    "clear": "Clear",
+    "loading": "Loading..."
+  },
+  "wallet": {
+    "address_copied": "Adress copied to clipboard",
+    "send": "Send",
+    "receive": "Receive",
+    "balance": "Your balance"
+  },
+  "settings": {
+    "title": "Settings",
+    "notifications": "Notifications",
+    "passcode": "Passcode",
+    "language": "Language",
+    "currency": "Currency",
+    "danger_zone": "Danger Zone",
+    "clear_data": "Clear Data"
   }
 }
+

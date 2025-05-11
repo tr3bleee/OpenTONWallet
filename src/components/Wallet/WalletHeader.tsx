@@ -4,6 +4,7 @@ import { IconButton, Snackbar, Text } from "@telegram-apps/telegram-ui";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {useTranslations} from "next-intl";
 
 interface WalletHeaderProps {
   address: string;
@@ -12,6 +13,8 @@ interface WalletHeaderProps {
 export const WalletHeader = ({ address }: WalletHeaderProps) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const router = useRouter();
+
+  const t = useTranslations('wallet');
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(address);
@@ -47,7 +50,7 @@ export const WalletHeader = ({ address }: WalletHeaderProps) => {
               className="w-5 h-5 mr-1.5"
             />
             <Text className="text-xs text-gray-50">
-              Address copied to clipboard
+              {t('address_copied')}
             </Text>
             </div>
         </Snackbar>

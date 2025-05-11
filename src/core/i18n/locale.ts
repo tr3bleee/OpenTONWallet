@@ -11,7 +11,16 @@ import type { Locale } from "./types";
 const COOKIE_NAME = "NEXT_LOCALE";
 
 const getLocale = async () => {
-  return cookies().get(COOKIE_NAME)?.value || defaultLocale;
+  const savedLocale = cookies().get(COOKIE_NAME)?.value;
+  if (savedLocale) return savedLocale;
+
+  // Get system language from Accept-Language header
+  const headers = new Headers();
+  const acceptLanguage = headers.get('accept-language');
+  const systemLocale = acceptLanguage?.split(',')[0]?.split('-')[0] || defaultLocale;
+
+  // Check if system locale is supported
+  return systemLocale === 'ru' ? 'ru' : defaultLocale;
 };
 
 const setLocale = async (locale?: string) => {
@@ -19,3 +28,5 @@ const setLocale = async (locale?: string) => {
 };
 
 export { getLocale, setLocale };
+
+

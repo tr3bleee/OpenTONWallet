@@ -2,6 +2,7 @@
 
 import { List, Cell, Section } from '@telegram-apps/telegram-ui';
 import { IconContainer } from '@telegram-apps/telegram-ui';
+import { useTranslations } from 'next-intl';
 import { Page } from '@/components/Page';
 import Image from 'next/image';
 import DeleteIcon from "@/app/_assets/delete.svg";
@@ -11,6 +12,8 @@ import LanguageIcon from "@/app/_assets/Language.svg";
 import CurrencyIcon from "@/app/_assets/Currency.svg";
 
 export default function SettingsPage() {
+  const t = useTranslations('settings');
+
   const handleClearStorage = () => {
     localStorage.clear();
   };
@@ -24,14 +27,14 @@ export default function SettingsPage() {
         width: 500
       }}
     >
-      <Section header="Settings">
+      <Section header={t('title')}>
         <Cell
-            before={ 
+            before={
               <IconContainer>
                 <Image src={NotificationsIcon} alt="Notifications" />
               </IconContainer>
             }>
-          Notifications
+          {t('notifications')}
         </Cell>
         <Cell
             before={
@@ -39,8 +42,8 @@ export default function SettingsPage() {
                 <Image src={PasscodeIcon} alt="Passcode" />
               </IconContainer>
             }>
-          Passcode
-        </Cell> 
+          {t('passcode')}
+        </Cell>
       </Section>
       <Section>
         <Cell
@@ -50,7 +53,7 @@ export default function SettingsPage() {
             </IconContainer>
           }
         >
-          Language
+          {t('language')}
         </Cell>
         <Cell
           before={
@@ -59,10 +62,10 @@ export default function SettingsPage() {
             </IconContainer>
           }
         >
-          Currency
+          {t('currency')}
         </Cell>
       </Section>
-      <Section header="Danger Zone">
+      <Section header={t('danger_zone')}>
         <Cell
           before={
             <IconContainer>
@@ -72,10 +75,11 @@ export default function SettingsPage() {
           onClick={handleClearStorage}
           className='text-red-500'
         >
-          Clear Data
+          {t('clear_data')}
         </Cell>
-      </Section> 
+      </Section>
     </List>
     </Page>
   );
 }
+
