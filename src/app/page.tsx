@@ -15,11 +15,9 @@ export default function WelcomePage() {
 	const t = useTranslations('welcome');
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			const data = localStorage.getItem("wallet");
-			if (data) {
-				router.push("/wallet");
-			}
+		const data = localStorage.getItem("wallet");
+		if (data) {
+			router.push("/wallet");
 		}
 	}, [router]);
 
